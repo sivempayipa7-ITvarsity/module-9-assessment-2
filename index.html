@@ -53,13 +53,31 @@
         }
         function displayWorldTime(){
             var dt = new Date();
-            document.getElementById("local").innerHTML = "local time:" + dt.toLocaleString();
+            document.getElementById("local").innerHTML = "Local time:" + dt.toLocaleString();
             
             var output = '<table id="cities">';
-            output += '<tr><th class=<"col1"></th><th class=<"col2"></th><th></th></tr>';
-            for(a = 0; a < cities.length; a ++){
-                output +='<tr><td><img src="img/${cities[a].flag}"/><td><td>${cities[a].name}</td><td>${getCurrentTime(cities[a].utcOffset)}</td></td>';
+
+  //       output += '<tr><th class=<"col1"></th><th class=<"col2"></th><th></th></tr>';  -->
+
+            output += `
+                        <tr>
+                            <th class="col1"></th>
+                            <th class="col2"></th>
+                            <th></th>
+                        </tr>
+                `;
+
+
+            for(a = 0; a < cities.length; a++){
+                //output +='<tr><td><img src="img/${cities[a].flag}"/><td><td>${cities[a].name}</td><td>${getCurrentTime(cities[a].utcOffset)}</td></td>';
                 
+                    output += `
+                    <tr>
+                        <td> <img src="img/${cities[a].flag}"/> </td>
+                        <td>${cities[a].name}</td>
+                        <td>${getCurrentTime(cities[a].utcOffset)}</td>
+                    </tr>
+                    `;
                 }
             output += '</table>';
             document.getElementById("output").innerHTML = output;
